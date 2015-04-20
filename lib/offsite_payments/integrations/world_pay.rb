@@ -230,6 +230,12 @@ module OffsitePayments #:nodoc:
           return @custom_params ||= read_custom_params
         end
 
+        # Check if the request comes from IP range 195.35.90.0 – 195.35.91.255
+        def valid_sender?(ip)
+          return true if OffsitePayments.mode == :test 
+          !!(/^195\.35\.(9[0-1])\.([0-9]|[1-9][0-9]|1([0-9][0-9])|2([0-4][0-9]|5[0-5]))$/.match(ip))
+        end
+
         private
 
         # Take the posted data and move the relevant data into a hash
