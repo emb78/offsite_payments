@@ -40,15 +40,6 @@ class CitrusNotificationTest < Test::Unit::TestCase
     assert @citrus.respond_to?(:acknowledge)
   end
 
-  def test_status_if_success
-    assert_equal 'Completed', @citrus.status
-  end
-
-  def test_status_if_cancelled
-    @citrus = Citrus::Notification.new(http_raw_data_canceled, :credential2 => '2c71a4ea7d2b88e151e60d9da38b2d4552568ba9')
-    assert_equal 'Failed', @citrus.status
-  end
-
   private
   def http_raw_data_success
 	  "TxGateway=&TxId=ORD427&TxMsg=Cash+on+delivery+requested&TxRefNo=CTX1309180549472058821&TxStatus=SUCCESS&action=callback&addressCity=Kolkata&addressCountry=India&addressState=West+Bengal&addressStreet1=122+sksdlk+sdjf&addressStreet2=&addressZip=9292929292&amount=10.00&authIdCode=&controller=test&currency=INR&email=sujoy.goswami%40gmail.com&firstName=Amit&isCOD=true&issuerRefNo=&lastName=Pandey&mobileNo=929292929&paymentMode=CASH_ON_DELIVERY&pgRespCode=0&pgTxnNo=CTX1309180549472058821&signature=807bb30a30a02b904f1434539f2eb07942ecb6f1&transactionId=40689"
