@@ -42,6 +42,11 @@ module OffsitePayments #:nodoc:
       @fields[name.to_s] = value.to_s
     end
 
+    def remove_field(name)
+      return if name.blank?
+      @fields.remove(name.to_s)
+    end
+
     def add_fields(subkey, params = {})
       params.each do |k, v|
         field = mappings[subkey][k]
