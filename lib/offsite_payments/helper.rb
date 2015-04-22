@@ -44,7 +44,7 @@ module OffsitePayments #:nodoc:
 
     def remove_field(name)
       return if name.blank?
-      @fields.remove(name.to_s)
+      @fields.delete(name.to_s)
     end
 
     def add_fields(subkey, params = {})
